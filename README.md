@@ -2,5 +2,5 @@
 
 
 # Creadores
-- Arion Ruiz-Tagle
-- Gustavo Mendez
+- [Arion Ruiz-Tagle](https://github.com/kawyyz)
+- [Gustavo Mendez](https://github.com/Gustavomendezcrts)
