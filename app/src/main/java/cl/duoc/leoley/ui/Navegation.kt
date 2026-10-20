@@ -1,10 +1,10 @@
 package cl.duoc.leoley.ui
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.navigation.NavController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import cl.duoc.leoley.viewmodel.DashboardViewModel
 import cl.duoc.leoley.viewmodel.LoginViewModel
 import cl.duoc.leoley.viewmodel.MarcadoresViewModel
@@ -15,25 +15,38 @@ fun Navegacion(
     viewModelDashboard: DashboardViewModel,
     viewModelMarcadores: MarcadoresViewModel
 ) {
-    var pantalla by remember { mutableStateOf("login") }
+    val navController = rememberNavController()
 
-    if (pantalla == "login") {
-        Login(
-            viewModel = viewModelLogin,
-            onLoginExitoso = { nombreUsuario ->
-                viewModelDashboard.guardarNombre(nombreUsuario)
-                pantalla = "dashboard"
-            }
-        )
-    } else if (pantalla == "dashboard") {
-        Dashboard(
-            viewModel = viewModelDashboard,
-            onMarcadores = { pantalla = "marcadores" }
-        )
-    } else if (pantalla == "marcadores") {
-        Marcadores(
-            viewModel = viewModelMarcadores,
-            onVolver = { pantalla = "dashboard" }
-        )
+    NavHost(navController = navController, startDestination = "login") {
+        composable("login") {
+            Login(
+                viewModel = viewModelLogin,
+                onLoginExitoso = { nombreUsuario ->
+                    viewModelDashboard.guardarNombre(nombreUsuario)
+                    // Navegamos al dashboard y limpiamos el historial para que no pueda volver con el botón atrás
+                    navController.navigate("dashboard") {
+                        popUpTo("login") { inclusive = true }
+                    }
+                }
+            )
+        }
+
+        composable("dashboard") {
+            Dashboard(
+                viewModel = viewModelDashboard,
+                onMarcadores = {
+                    navController.navigate("marcadores")
+                }
+            )
+        }
+
+        composable("marcadores") {
+            Marcadores(
+                viewModel = viewModelMarcadores,
+                onVolver = {
+                    navController.popBackStack()
+                }
+            )
+        }
     }
 }
