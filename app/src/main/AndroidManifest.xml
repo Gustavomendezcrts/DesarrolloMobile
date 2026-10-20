@@ -24,13 +24,4 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".ui.Dashboard"
-            android:exported="false" />
-
-        <activity
-            android:name=".ui.Marcadores"
-            android:exported="false" />
-    </application>
-
 </manifest>
