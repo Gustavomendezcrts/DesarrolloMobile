@@ -25,11 +25,11 @@
         </activity>
 
         <activity
-            android:name=".DashboardActivity"
+            android:name=".ui.Dashboard"
             android:exported="false" />
 
         <activity
-            android:name=".MarcadorActivity"
+            android:name=".ui.Marcadores"
             android:exported="false" />
     </application>
 
