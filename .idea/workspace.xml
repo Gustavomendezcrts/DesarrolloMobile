@@ -10,13 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="20aded98-6c82-4cb5-9e36-6ba4b331c45e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/cl/duoc/leoley/repository/MarcadoresRepository.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/cl/duoc/leoley/viewmodel/MarcadoresViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cl/duoc/leoley/DashboardActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cl/duoc/leoley/ui/DashboardActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cl/duoc/leoley/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cl/duoc/leoley/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cl/duoc/leoley/MarcadorActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cl/duoc/leoley/ui/Marcadores.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/cl/duoc/leoley/viewmodel/LoginViewModel.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

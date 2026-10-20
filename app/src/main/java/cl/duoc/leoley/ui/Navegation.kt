@@ -6,20 +6,25 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import cl.duoc.leoley.viewmodel.DashboardViewModel
+import cl.duoc.leoley.viewmodel.LoginViewModel
 import cl.duoc.leoley.viewmodel.MarcadoresViewModel
 
 @Composable
 fun Navegacion(
+    viewModelLogin: LoginViewModel,
     viewModelDashboard: DashboardViewModel,
     viewModelMarcadores: MarcadoresViewModel
 ) {
     var pantalla by remember { mutableStateOf("login") }
 
     if (pantalla == "login") {
-        Login(onLoginExitoso = { nombreUsuario ->
-            viewModelDashboard.guardarNombre(nombreUsuario)
-            pantalla = "dashboard"
-        })
+        Login(
+            viewModel = viewModelLogin,
+            onLoginExitoso = { nombreUsuario ->
+                viewModelDashboard.guardarNombre(nombreUsuario)
+                pantalla = "dashboard"
+            }
+        )
     } else if (pantalla == "dashboard") {
         Dashboard(
             viewModel = viewModelDashboard,

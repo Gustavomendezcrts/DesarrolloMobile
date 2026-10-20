@@ -6,10 +6,14 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import cl.duoc.leoley.ui.Navegacion
 import cl.duoc.leoley.ui.theme.LeoleyTheme
+import cl.duoc.leoley.viewmodel.DashboardViewModel
+import cl.duoc.leoley.viewmodel.LoginViewModel
 import cl.duoc.leoley.viewmodel.MarcadoresViewModel
 
 class MainActivity : ComponentActivity() {
 
+    private val viewModelLogin = LoginViewModel()
+    private val viewModelDashboard = DashboardViewModel()
     private val viewModelMarcadores = MarcadoresViewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,7 +21,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             LeoleyTheme {
-                Navegacion(viewModelMarcadores)
+                Navegacion(viewModelLogin, viewModelDashboard, viewModelMarcadores)
             }
         }
     }
