@@ -10,8 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="20aded98-6c82-4cb5-9e36-6ba4b331c45e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/cl/duoc/leoley/MarcadorActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/cl/duoc/leoley/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cl/duoc/leoley/MainActivity.kt" afterDir="false" />
@@ -69,6 +69,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Android App.app.executor": "Run",
+    "CidrDebugProfileConversion": "true",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
@@ -166,12 +167,12 @@
       <map>
         <entry key="cl.duoc.leoley">
           <value>
-            <CheckInfo lastCheckTimestamp="1792065776072" />
+            <CheckInfo lastCheckTimestamp="1792497086397" />
           </value>
         </entry>
         <entry key="cl.duoc.leoley.test">
           <value>
-            <CheckInfo lastCheckTimestamp="1792065776068" />
+            <CheckInfo lastCheckTimestamp="1792497086398" />
           </value>
         </entry>
       </map>

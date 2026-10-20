@@ -27,9 +27,9 @@
         <activity
             android:name=".DashboardActivity"
             android:exported="false" />
-    </application>
+
         <activity
-            android:name=".camaraActivity"
+            android:name=".MarcadorActivity"
             android:exported="false" />
     </application>
 
