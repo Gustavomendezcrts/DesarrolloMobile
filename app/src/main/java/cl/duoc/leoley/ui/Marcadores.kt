@@ -43,10 +43,15 @@ fun Marcadores(viewModel: MarcadoresViewModel, onVolver: () -> Unit) {
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(vertical = 4.dp),
+                        .padding(vertical = 8.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Text(ley, modifier = Modifier.weight(1f))
+                    Column(modifier = Modifier.weight(1f)) {
+                        Text("Ley ${ley.numero}", fontSize = 18.sp)
+                        Text(ley.nombre)
+                        Text("Año de publicación: ${ley.anio}")
+                        Text(ley.descripcion)
+                    }
                     Button(onClick = { viewModel.eliminarMarcador(ley) }) {
                         Text("Eliminar marcador")
                     }

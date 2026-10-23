@@ -5,6 +5,8 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import cl.duoc.leoley.viewmodel.AyudaViewModel
+import cl.duoc.leoley.viewmodel.BuscadorViewModel
 import cl.duoc.leoley.viewmodel.DashboardViewModel
 import cl.duoc.leoley.viewmodel.LoginViewModel
 import cl.duoc.leoley.viewmodel.MarcadoresViewModel
@@ -13,7 +15,9 @@ import cl.duoc.leoley.viewmodel.MarcadoresViewModel
 fun Navegacion(
     viewModelLogin: LoginViewModel,
     viewModelDashboard: DashboardViewModel,
-    viewModelMarcadores: MarcadoresViewModel
+    viewModelMarcadores: MarcadoresViewModel,
+    viewModelAyuda: AyudaViewModel,
+    viewModelBuscador: BuscadorViewModel
 ) {
     val navController = rememberNavController()
 
@@ -36,6 +40,12 @@ fun Navegacion(
                 viewModel = viewModelDashboard,
                 onMarcadores = {
                     navController.navigate("marcadores")
+                },
+                onAyuda = {
+                    navController.navigate("ayuda")
+                },
+                onBuscador = {
+                    navController.navigate("buscador")
                 }
             )
         }
@@ -43,6 +53,27 @@ fun Navegacion(
         composable("marcadores") {
             Marcadores(
                 viewModel = viewModelMarcadores,
+                onVolver = {
+                    navController.popBackStack()
+                }
+            )
+        }
+
+        composable("ayuda") {
+            Ayuda(
+                viewModel = viewModelAyuda,
+                onVolver = {
+                    navController.popBackStack()
+                }
+            )
+        }
+
+        composable("buscador") {
+            Buscador(
+                viewModel = viewModelBuscador,
+                onGuardar = { ley ->
+                    viewModelMarcadores.agregarMarcador(ley)
+                },
                 onVolver = {
                     navController.popBackStack()
                 }

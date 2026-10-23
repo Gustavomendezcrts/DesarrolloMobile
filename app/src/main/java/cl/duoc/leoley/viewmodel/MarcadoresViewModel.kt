@@ -4,6 +4,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import cl.duoc.leoley.model.Ley
 import cl.duoc.leoley.repository.MarcadoresRepository
 
 class MarcadoresViewModel : ViewModel() {
@@ -21,12 +22,12 @@ class MarcadoresViewModel : ViewModel() {
         mostrarLista = !mostrarLista
     }
 
-    fun eliminarMarcador(ley: String) {
+    fun eliminarMarcador(ley: Ley) {
         repository.eliminarMarcador(ley)
         marcadores = repository.obtenerMarcadores()
     }
 
-    fun agregarMarcador(ley: String) {
+    fun agregarMarcador(ley: Ley) {
         repository.agregarMarcador(ley)
         marcadores = repository.obtenerMarcadores()
     }

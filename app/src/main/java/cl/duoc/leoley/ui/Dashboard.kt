@@ -15,7 +15,12 @@ import androidx.compose.ui.unit.sp
 import cl.duoc.leoley.viewmodel.DashboardViewModel
 
 @Composable
-fun Dashboard(viewModel: DashboardViewModel, onMarcadores: () -> Unit) {
+fun Dashboard(
+    viewModel: DashboardViewModel,
+    onMarcadores: () -> Unit,
+    onAyuda: () -> Unit,
+    onBuscador: () -> Unit
+) {
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
@@ -30,16 +35,12 @@ fun Dashboard(viewModel: DashboardViewModel, onMarcadores: () -> Unit) {
             }
             Spacer(modifier = Modifier.height(8.dp))
 
-            Button(onClick = {
-                // Aquí irá Ayuda
-            }) {
+            Button(onClick = onAyuda) {
                 Text("Ayuda")
             }
             Spacer(modifier = Modifier.height(8.dp))
 
-            Button(onClick = {
-                // Aquí irá Buscador
-            }) {
+            Button(onClick = onBuscador) {
                 Text("Buscador")
             }
         }
