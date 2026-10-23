@@ -8,6 +8,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -24,6 +26,7 @@ fun Marcadores(viewModel: MarcadoresViewModel, onVolver: () -> Unit) {
             .fillMaxSize()
             .statusBarsPadding()
             .padding(24.dp)
+            .verticalScroll(rememberScrollState())
     ) {
         Text("Marcadores", fontSize = 28.sp)
         Spacer(modifier = Modifier.height(8.dp))
