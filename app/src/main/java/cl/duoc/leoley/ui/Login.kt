@@ -2,7 +2,9 @@ package cl.duoc.leoley.ui
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
@@ -22,7 +24,9 @@ fun Login(viewModel: LoginViewModel, onLoginExitoso: (String) -> Unit) {
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
-        Column() {
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            Logo(160.dp)
+            Spacer(modifier = Modifier.height(16.dp))
             Text(text = "LOGIN", fontSize = 32.sp)
 
             OutlinedTextField(

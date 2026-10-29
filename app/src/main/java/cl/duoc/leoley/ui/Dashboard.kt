@@ -26,6 +26,8 @@ fun Dashboard(
         contentAlignment = Alignment.Center
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            Logo(120.dp)
+            Spacer(modifier = Modifier.height(16.dp))
             Text(text = "Dashboard", fontSize = 32.sp)
             Text(text = "Hola ${viewModel.nombre}")
             Spacer(modifier = Modifier.height(24.dp))
