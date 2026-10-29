@@ -49,4 +49,10 @@ class LoginViewModel : ViewModel() {
             }
         }
     }
+
+    fun limpiar() {
+        usuario = ""
+        contrasena = ""
+        mensaje = ""
+    }
 }

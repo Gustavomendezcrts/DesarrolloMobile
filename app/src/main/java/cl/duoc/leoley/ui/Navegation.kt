@@ -1,10 +1,10 @@
 package cl.duoc.leoley.ui
 
 import androidx.compose.runtime.Composable
-import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import cl.duoc.leoley.repository.SesionRepository   // NUEVO
 import cl.duoc.leoley.viewmodel.AyudaViewModel
 import cl.duoc.leoley.viewmodel.BuscadorViewModel
 import cl.duoc.leoley.viewmodel.DashboardViewModel
@@ -17,17 +17,20 @@ fun Navegacion(
     viewModelDashboard: DashboardViewModel,
     viewModelMarcadores: MarcadoresViewModel,
     viewModelAyuda: AyudaViewModel,
-    viewModelBuscador: BuscadorViewModel
+    viewModelBuscador: BuscadorViewModel,
+    sesion: SesionRepository,
+    destinoInicial: String
 ) {
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = "login") {
+    NavHost(navController = navController, startDestination = destinoInicial) {
+
         composable("login") {
             Login(
                 viewModel = viewModelLogin,
                 onLoginExitoso = { nombreUsuario ->
+                    sesion.guardarSesion(nombreUsuario)
                     viewModelDashboard.guardarNombre(nombreUsuario)
-                    // Navegamos al dashboard y limpiamos el historial para que no pueda volver con el botón atrás
                     navController.navigate("dashboard") {
                         popUpTo("login") { inclusive = true }
                     }
@@ -46,6 +49,13 @@ fun Navegacion(
                 },
                 onBuscador = {
                     navController.navigate("buscador")
+                },
+                onCerrarSesion = {
+                    sesion.cerrarSesion()
+                    viewModelLogin.limpiar()
+                    navController.navigate("login") {
+                        popUpTo("dashboard") { inclusive = true }
+                    }
                 }
             )
         }

@@ -19,7 +19,8 @@ fun Dashboard(
     viewModel: DashboardViewModel,
     onMarcadores: () -> Unit,
     onAyuda: () -> Unit,
-    onBuscador: () -> Unit
+    onBuscador: () -> Unit,
+    onCerrarSesion: () -> Unit
 ) {
     Box(
         modifier = Modifier.fillMaxSize(),
@@ -44,6 +45,12 @@ fun Dashboard(
 
             Button(onClick = onBuscador) {
                 Text("Buscador")
+            }
+
+            Spacer(modifier = Modifier.height(8.dp))
+
+            Button(onClick = onCerrarSesion) {
+                Text("Cerrar sesión")
             }
         }
     }
