@@ -1,5 +1,6 @@
 package cl.duoc.leoley.ui
 
+import android.widget.Toast
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -15,12 +16,15 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import cl.duoc.leoley.repository.PdfRepository
 import cl.duoc.leoley.viewmodel.MarcadoresViewModel
 
 @Composable
 fun Marcadores(viewModel: MarcadoresViewModel, onVolver: () -> Unit) {
+    val context = LocalContext.current
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -55,8 +59,22 @@ fun Marcadores(viewModel: MarcadoresViewModel, onVolver: () -> Unit) {
                         Text("Año de publicación: ${ley.anio}")
                         Text(ley.descripcion)
                     }
-                    Button(onClick = { viewModel.eliminarMarcador(ley) }) {
-                        Text("Eliminar marcador")
+                    Column {
+                        Button(onClick = {
+                            val exito = PdfRepository(context).descargarLey(ley)
+                            val mensaje = if (exito) {
+                                "PDF guardado en Descargas"
+                            } else {
+                                "No se pudo guardar el PDF (requiere Android 10 o superior)"
+                            }
+                            Toast.makeText(context, mensaje, Toast.LENGTH_SHORT).show()
+                        }) {
+                            Text("Descargar")
+                        }
+                        Spacer(modifier = Modifier.height(4.dp))
+                        Button(onClick = { viewModel.eliminarMarcador(ley) }) {
+                            Text("Eliminar")
+                        }
                     }
                 }
             }
