@@ -27,7 +27,7 @@ fun Login(viewModel: LoginViewModel, onLoginExitoso: (String) -> Unit) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Logo(160.dp)
             Spacer(modifier = Modifier.height(16.dp))
-            Text(text = "LOGIN", fontSize = 32.sp)
+            Text(text = "Iniciar Sesion", fontSize = 32.sp)
 
             OutlinedTextField(
                 value = viewModel.usuario,

@@ -1,22 +1,19 @@
 package cl.duoc.leoley.repository
 
+import cl.duoc.leoley.data.MarcadorDao
 import cl.duoc.leoley.model.Ley
 
-class MarcadoresRepository {
+class MarcadoresRepository(private val dao: MarcadorDao) {
 
-    private val leyes = mutableListOf<Ley>()
-
-    fun obtenerMarcadores(): List<Ley> {
-        return leyes.toList()
+    suspend fun obtenerMarcadores(): List<Ley> {
+        return dao.obtenerTodos()
     }
 
-    fun agregarMarcador(ley: Ley) {
-        if (!leyes.contains(ley)) {
-            leyes.add(ley)
-        }
+    suspend fun agregarMarcador(ley: Ley) {
+        dao.insertar(ley)
     }
 
-    fun eliminarMarcador(ley: Ley) {
-        leyes.remove(ley)
+    suspend fun eliminarMarcador(ley: Ley) {
+        dao.eliminar(ley)
     }
 }
