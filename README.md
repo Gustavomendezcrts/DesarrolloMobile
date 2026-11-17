@@ -46,9 +46,3 @@ app/src/main/java/cl/duoc/leoley/
 
 > [!TIP]
 > En la raíz del paquete solo debe estar `MainActivity`. Las pantallas van en `ui`, la lógica de estado en `viewmodel` y los datos en `repository` y `model`.
-
-
-
-## 📄 Licencia
-
-Proyecto académico. *(Agrega aquí la licencia si corresponde.)*
