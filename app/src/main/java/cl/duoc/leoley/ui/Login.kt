@@ -48,11 +48,8 @@ import androidx.compose.ui.unit.dp
 import cl.duoc.leoley.viewmodel.LoginViewModel
 
 @Composable
-<<<<<<< HEAD
 fun Login(viewModel: LoginViewModel, onLoginExitoso: (String, String) -> Unit) {
-=======
-fun Login(viewModel: LoginViewModel, onLoginExitoso: (String) -> Unit) {
->>>>>>> 66c2654787e9e784942680d8b8ead51004a55014
+
     val hayError = viewModel.mensaje.isNotEmpty()
     var verContrasena by rememberSaveable { mutableStateOf(false) }
 
@@ -69,11 +66,7 @@ fun Login(viewModel: LoginViewModel, onLoginExitoso: (String) -> Unit) {
         Logo(160.dp)
         Spacer(modifier = Modifier.height(16.dp))
         Text(
-<<<<<<< HEAD
             text = "Iniciar sesión",
-=======
-            text = "Iniciar Sesion",
->>>>>>> 66c2654787e9e784942680d8b8ead51004a55014
             style = MaterialTheme.typography.headlineMedium,
             fontWeight = FontWeight.Bold,
             color = MaterialTheme.colorScheme.primary
@@ -81,18 +74,11 @@ fun Login(viewModel: LoginViewModel, onLoginExitoso: (String) -> Unit) {
         Spacer(modifier = Modifier.height(24.dp))
 
         OutlinedTextField(
-<<<<<<< HEAD
             value = viewModel.correo,
             onValueChange = { viewModel.cambiarCorreo(it) },
             label = { Text("Correo") },
             leadingIcon = { Icon(Icons.Default.Person, contentDescription = null) },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
-=======
-            value = viewModel.usuario,
-            onValueChange = { viewModel.cambiarUsuario(it) },
-            label = { Text("Correo/Usuario") },
-            leadingIcon = { Icon(Icons.Default.Person, contentDescription = null) },
->>>>>>> 66c2654787e9e784942680d8b8ead51004a55014
             singleLine = true,
             isError = hayError,
             shape = RoundedCornerShape(12.dp),
@@ -133,10 +119,7 @@ fun Login(viewModel: LoginViewModel, onLoginExitoso: (String) -> Unit) {
             onClick = {
                 viewModel.iniciarSesion(onLoginExitoso)
             },
-<<<<<<< HEAD
             enabled = !viewModel.cargando,
-=======
->>>>>>> 66c2654787e9e784942680d8b8ead51004a55014
             shape = RoundedCornerShape(12.dp),
             modifier = Modifier
                 .fillMaxWidth()
