@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cl.duoc.leoley.model.Ley
 import cl.duoc.leoley.viewmodel.BuscadorViewModel
+import androidx.compose.material3.CircularProgressIndicator
 
 @Composable
 fun Buscador(
@@ -55,7 +56,15 @@ fun Buscador(
         Text(text = viewModel.mensaje)
         Spacer(modifier = Modifier.height(8.dp))
 
-        if (viewModel.resultados.isEmpty()) {
+        if (viewModel.cargando) {
+            CircularProgressIndicator()
+        }
+
+        if (viewModel.error.isNotEmpty()) {
+            Text(viewModel.error)
+        }
+
+        if (!viewModel.cargando && viewModel.error.isEmpty() && viewModel.resultados.isEmpty()) {
             Text("No se encontraron leyes")
         }
 
