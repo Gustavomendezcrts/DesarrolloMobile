@@ -1,3 +1,4 @@
+
 package cl.duoc.leoley.ui
 
 import androidx.compose.foundation.background
@@ -48,7 +49,11 @@ import androidx.compose.ui.unit.dp
 import cl.duoc.leoley.viewmodel.LoginViewModel
 
 @Composable
-fun Login(viewModel: LoginViewModel, onLoginExitoso: (String, String) -> Unit) {
+fun Login(
+    viewModel: LoginViewModel,
+    onLoginExitoso: (String, String) -> Unit,
+    onIrARegistro: () -> Unit
+) {
 
     val hayError = viewModel.mensaje.isNotEmpty()
     var verContrasena by rememberSaveable { mutableStateOf(false) }
@@ -134,6 +139,10 @@ fun Login(viewModel: LoginViewModel, onLoginExitoso: (String, String) -> Unit) {
             } else {
                 Text(text = "Login")
             }
+        }
+
+        TextButton(onClick = onIrARegistro) {
+            Text("¿No tienes cuenta? Regístrate")
         }
     }
 }

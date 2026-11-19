@@ -1,15 +1,17 @@
 package cl.duoc.leoley.ui
 
 import androidx.compose.runtime.Composable
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import cl.duoc.leoley.repository.SesionRepository   // NUEVO
+import cl.duoc.leoley.repository.SesionRepository
 import cl.duoc.leoley.viewmodel.AyudaViewModel
 import cl.duoc.leoley.viewmodel.BuscadorViewModel
 import cl.duoc.leoley.viewmodel.DashboardViewModel
 import cl.duoc.leoley.viewmodel.LoginViewModel
 import cl.duoc.leoley.viewmodel.MarcadoresViewModel
+import cl.duoc.leoley.viewmodel.RegistroViewModel
 
 @Composable
 fun Navegacion(
@@ -34,6 +36,28 @@ fun Navegacion(
                     navController.navigate("dashboard") {
                         popUpTo("login") { inclusive = true }
                     }
+                },
+                onIrARegistro = {
+                    navController.navigate("registro")
+                }
+            )
+        }
+
+        composable("registro") {
+            // viewModel() lo ata a esta pantalla: al salir, el formulario se descarta
+            val viewModelRegistro: RegistroViewModel = viewModel()
+            Registro(
+                viewModel = viewModelRegistro,
+                onRegistroExitoso = { nombreUsuario, token ->
+                    sesion.guardarSesion(nombreUsuario, token)
+                    viewModelDashboard.guardarNombre(nombreUsuario)
+                    // Borra login y registro del historial para que "atrás" no vuelva
+                    navController.navigate("dashboard") {
+                        popUpTo("login") { inclusive = true }
+                    }
+                },
+                onVolver = {
+                    navController.popBackStack()
                 }
             )
         }

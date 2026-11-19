@@ -1,5 +1,7 @@
+
 package cl.duoc.leoley.viewmodel
 
+import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -43,15 +45,37 @@ class LoginViewModel : ViewModel() {
         viewModelScope.launch {
             cargando = true
             mensaje = ""
+
+            val token = try {
+                repo.iniciarSesion(correo.trim(), contrasena)
+            } catch (e: CancellationException) {
+                throw e
+            } catch (e: HttpException) {
+                Log.e("LeoLeyLogin", "auth/login falló: ${e.code()}", e)
+                mensaje = if (e.code() in 400..499) {
+                    "Correo o contraseña incorrectos"
+                } else {
+                    "El servidor tuvo un problema, intenta más tarde"
+                }
+                cargando = false
+                return@launch
+            } catch (e: Exception) {
+                Log.e("LeoLeyLogin", "auth/login error", e)
+                mensaje = "No se pudo conectar con el servidor"
+                cargando = false
+                return@launch
+            }
+
             try {
-                val token = repo.iniciarSesion(correo.trim(), contrasena)
                 val usuario = repo.obtenerUsuario(token)
                 onExito(usuario.nombre, token)
             } catch (e: CancellationException) {
                 throw e
             } catch (e: HttpException) {
-                mensaje = "Correo o contraseña incorrectos"
+                Log.e("LeoLeyLogin", "auth/me falló: ${e.code()}", e)
+                mensaje = "No se pudo cargar tu perfil, intenta nuevamente"
             } catch (e: Exception) {
+                Log.e("LeoLeyLogin", "auth/me error", e)
                 mensaje = "No se pudo conectar con el servidor"
             }
             cargando = false
