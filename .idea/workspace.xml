@@ -10,13 +10,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="20aded98-6c82-4cb5-9e36-6ba4b331c45e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/test/java/cl/duoc/leoley/BuscadorRepositoryTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cl/duoc/leoley/repository/BuscadorRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cl/duoc/leoley/repository/BuscadorRepository.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/cl/duoc/leoley/ExampleUnitTest.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/cl/duoc/leoley/ui/Ayuda.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cl/duoc/leoley/ui/Ayuda.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/cl/duoc/leoley/ui/Buscador.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cl/duoc/leoley/ui/Buscador.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/cl/duoc/leoley/ui/Dashboard.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cl/duoc/leoley/ui/Dashboard.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/cl/duoc/leoley/ui/Login.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cl/duoc/leoley/ui/Login.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/cl/duoc/leoley/ui/Marcadores.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cl/duoc/leoley/ui/Marcadores.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/cl/duoc/leoley/ui/theme/Color.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cl/duoc/leoley/ui/theme/Color.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,11 +92,11 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Android App.app.executor": "Debug",
+    "Android App.app.executor": "Run",
     "ApkExportedModule": "leoley.app",
     "CidrDebugProfileConversion": "true",
     "ExportApk.ApkPathForleoley.app": "C:\\Users\\Gustavo\\Documents\\codigos\\AndoidStudio\\DesarrolloMobile\\app",
-    "Gradle.Tests in 'cl.duoc.leoley'.executor": "Coverage",
+    "Gradle.Tests in 'cl.duoc.leoley'.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
@@ -124,7 +125,7 @@
       <recent name="cl.duoc.leoley.viewmodel" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.Tests in 'cl.duoc.leoley'">
+  <component name="RunManager" selected="Android App.app">
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
       <module name="leoley.app" />
       <option name="ANDROID_RUN_CONFIGURATION_SCHEMA_VERSION" value="1" />
