@@ -1,5 +1,12 @@
 package cl.duoc.leoley.ui
 
+import android.Manifest
+import android.content.pm.PackageManager
+import android.os.Build
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.runtime.LaunchedEffect
+import androidx.core.content.ContextCompat
 import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
@@ -49,6 +56,21 @@ import cl.duoc.leoley.viewmodel.MarcadoresViewModel
 @Composable
 fun Marcadores(viewModel: MarcadoresViewModel, onVolver: () -> Unit) {
     val context = LocalContext.current
+
+    // NUEVO: ventanita de Android que pide permiso para mostrar notificaciones
+    val pedirPermiso = rememberLauncherForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { }
+
+    // NUEVO: se ejecuta una sola vez al entrar a la pantalla
+    LaunchedEffect(Unit) {
+        if (Build.VERSION.SDK_INT >= 33 &&
+            ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS)
+            != PackageManager.PERMISSION_GRANTED
+        ) {
+            pedirPermiso.launch(Manifest.permission.POST_NOTIFICATIONS)
+        }
+    }
 
     // Resultado de la última descarga (verde si funcionó, rojo si falló).
     // Reemplaza al Toast, que no se puede pintar de colores.

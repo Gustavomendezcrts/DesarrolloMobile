@@ -10,14 +10,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="20aded98-6c82-4cb5-9e36-6ba4b331c45e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/test/java/cl/duoc/leoley/AuthRepositoryTest.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cl/duoc/leoley/ui/Ayuda.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cl/duoc/leoley/ui/Ayuda.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cl/duoc/leoley/ui/Buscador.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cl/duoc/leoley/ui/Buscador.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cl/duoc/leoley/ui/Dashboard.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cl/duoc/leoley/ui/Dashboard.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cl/duoc/leoley/ui/Login.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cl/duoc/leoley/ui/Login.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cl/duoc/leoley/ui/Marcadores.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cl/duoc/leoley/ui/Marcadores.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/cl/duoc/leoley/ui/theme/Color.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cl/duoc/leoley/ui/theme/Color.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/cl/duoc/leoley/repository/PdfRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/cl/duoc/leoley/repository/PdfRepository.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,8 +52,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Kotlin Class" />
         <option value="Kotlin File" />
+        <option value="Kotlin Class" />
       </list>
     </option>
   </component>
@@ -259,12 +255,12 @@
       <map>
         <entry key="cl.duoc.leoley">
           <value>
-            <CheckInfo lastCheckTimestamp="1792497086397" />
+            <CheckInfo lastCheckTimestamp="1795124879066" />
           </value>
         </entry>
         <entry key="cl.duoc.leoley.test">
           <value>
-            <CheckInfo lastCheckTimestamp="1792497086398" />
+            <CheckInfo lastCheckTimestamp="1795124879061" />
           </value>
         </entry>
       </map>

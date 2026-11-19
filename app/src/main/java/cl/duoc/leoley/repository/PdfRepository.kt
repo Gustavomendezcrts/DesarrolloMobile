@@ -1,5 +1,7 @@
 package cl.duoc.leoley.repository
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.content.ContentValues
 import android.content.Context
 import android.graphics.pdf.PdfDocument
@@ -7,6 +9,7 @@ import android.os.Build
 import android.provider.MediaStore
 import android.text.StaticLayout
 import android.text.TextPaint
+import androidx.core.app.NotificationCompat
 import cl.duoc.leoley.model.Ley
 
 class PdfRepository(private val context: Context) {
@@ -45,8 +48,9 @@ class PdfRepository(private val context: Context) {
 
             pdf.finishPage(pagina)
 
+            val nombreArchivo = "Ley_${ley.numero.replace(".", "")}.pdf"
             val valores = ContentValues().apply {
-                put(MediaStore.Downloads.DISPLAY_NAME, "Ley_${ley.numero.replace(".", "")}.pdf")
+                put(MediaStore.Downloads.DISPLAY_NAME, nombreArchivo)
                 put(MediaStore.Downloads.MIME_TYPE, "application/pdf")
             }
             val uri = context.contentResolver.insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, valores)
@@ -59,9 +63,29 @@ class PdfRepository(private val context: Context) {
                 pdf.writeTo(salida)
             }
             pdf.close()
+
+            // NUEVO: avisa con una notificación que la descarga terminó
+            mostrarNotificacion(nombreArchivo)
             return true
         } catch (e: Exception) {
             return false
         }
+    }
+    private fun mostrarNotificacion(nombreArchivo: String) {
+        val manager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
+        // El canal es la "categoría" de la notificación (obligatorio desde Android 8)
+        val canal = NotificationChannel("descargas", "Descargas", NotificationManager.IMPORTANCE_DEFAULT)
+        manager.createNotificationChannel(canal)
+
+        val notificacion = NotificationCompat.Builder(context, "descargas")
+            .setSmallIcon(android.R.drawable.stat_sys_download_done)
+            .setContentTitle("Descarga exitosa")
+            .setContentText("$nombreArchivo guardado en Descargas")
+            .setAutoCancel(true)
+            .build()
+
+        // El número distinto por archivo evita que una notificación pise a otra
+        manager.notify(nombreArchivo.hashCode(), notificacion)
     }
 }
