@@ -1,15 +1,9 @@
 package cl.duoc.leoley.model
 
+import com.google.gson.annotations.SerializedName
+
 data class Usuario(
     val id: Int,
-    var nombre: String,
-    var apellido: String,
-    var correo: String,
-    var username: String,
-    var contrasena: String,
-    var rol: String
-) {
-    fun mostrarInfo(): String {
-        return "ID: $id\nNombre: $nombre $apellido\nCorreo: $correo\nRol: $rol"
-    }
-}
+    @SerializedName("name") val nombre: String,
+    @SerializedName("email") val correo: String
+)

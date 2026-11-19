@@ -6,8 +6,11 @@ class SesionRepository(context: Context) {
 
     private val prefs = context.getSharedPreferences("sesion", Context.MODE_PRIVATE)
 
-    fun guardarSesion(nombre: String) {
-        prefs.edit().putString("nombre", nombre).apply()
+    fun guardarSesion(nombre: String, token: String) {
+        prefs.edit()
+            .putString("nombre", nombre)
+            .putString("token", token)
+            .apply()
     }
 
     // Devuelve el nombre guardado, o null si no hay sesión

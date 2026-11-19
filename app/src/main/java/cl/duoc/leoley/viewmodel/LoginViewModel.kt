@@ -4,18 +4,17 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
-import cl.duoc.leoley.repository.LoginRepository
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
+import androidx.lifecycle.viewModelScope
+import cl.duoc.leoley.repository.AuthRepository
+import kotlin.coroutines.cancellation.CancellationException
 import kotlinx.coroutines.launch
-import kotlin.time.Duration.Companion.milliseconds
+import retrofit2.HttpException
 
 class LoginViewModel : ViewModel() {
 
-    private val repo = LoginRepository()
+    private val repo = AuthRepository()
 
-    var usuario by mutableStateOf("")
+    var correo by mutableStateOf("")
         private set
 
     var contrasena by mutableStateOf("")
@@ -27,31 +26,40 @@ class LoginViewModel : ViewModel() {
     var cargando by mutableStateOf(false)
         private set
 
-    fun cambiarUsuario(valor: String) {
-        usuario = valor
+    fun cambiarCorreo(valor: String) {
+        correo = valor
     }
 
     fun cambiarContrasena(valor: String) {
         contrasena = valor
     }
 
-    fun iniciarSesion(onExito: (String) -> Unit) {
-        val resultado = repo.login(usuario, contrasena)
-        cargando = true
-        CoroutineScope(Dispatchers.Main).launch {
-            delay(2000.milliseconds)
-            cargando = false
+    fun iniciarSesion(onExito: (String, String) -> Unit) {
+        if (correo.isBlank() || contrasena.isBlank()) {
+            mensaje = "Completa el correo y la contraseña"
+            return
+        }
 
-            if (resultado != null) {
-                onExito(resultado.nombre)
-            } else {
-                mensaje = "Credenciales incorrectas"
+        viewModelScope.launch {
+            cargando = true
+            mensaje = ""
+            try {
+                val token = repo.iniciarSesion(correo.trim(), contrasena)
+                val usuario = repo.obtenerUsuario(token)
+                onExito(usuario.nombre, token)
+            } catch (e: CancellationException) {
+                throw e
+            } catch (e: HttpException) {
+                mensaje = "Correo o contraseña incorrectos"
+            } catch (e: Exception) {
+                mensaje = "No se pudo conectar con el servidor"
             }
+            cargando = false
         }
     }
 
     fun limpiar() {
-        usuario = ""
+        correo = ""
         contrasena = ""
         mensaje = ""
     }

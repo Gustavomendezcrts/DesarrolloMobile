@@ -28,8 +28,8 @@ fun Navegacion(
         composable("login") {
             Login(
                 viewModel = viewModelLogin,
-                onLoginExitoso = { nombreUsuario ->
-                    sesion.guardarSesion(nombreUsuario)
+                onLoginExitoso = { nombreUsuario, token ->
+                    sesion.guardarSesion(nombreUsuario, token)
                     viewModelDashboard.guardarNombre(nombreUsuario)
                     navController.navigate("dashboard") {
                         popUpTo("login") { inclusive = true }
